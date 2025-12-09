@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ведомости — Новости</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; background: #f9f9f9; }
+        h3 { color: #d40000; }
+        dl { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        dt { font-weight: bold; margin-top: 20px; color: #d40000; }
+        dd { margin-left: 20px; margin-bottom: 20px; line-height: 1.5; }
+        a { color: #d40000; }
+    </style>
+</head>
+<body>
+    <h3><%= title %></h3>
+    <dl>
+        <% news.forEach(item => { %>
+            <dt>
+                <a href="<%= item.link %>" target="_blank"><%= item.title %></a>
+            </dt>
+            <dd><%= item.description.replace(/<[^>]*>/g, '').substring(0, 300) %>...
+                <br><small><%= new Date(item.pubDate).toLocaleString('ru-RU') %></small>
+            </dd>
+        <% }) %>
+    </dl>
+    <hr>
+    <p><a href="/">← На главную</a></p>
+</body>
+</html>
